@@ -54,6 +54,7 @@
     login_user: "{{ MYSQL_USER }}"
     login_password: "{{ MYSQL_PASSWORD }}"
     login_host: " {{ MYSQL_HOST }}"
+    target: /app/schema/backend.sql
 
 - name: Daeomon Reload and restart the services
   ansible.builtin.systemd_service:
