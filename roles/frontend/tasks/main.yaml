@@ -10,7 +10,7 @@
     enabled: yes
 
 - name: delete html directory
-  ansible.built.file:
+  ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
 
