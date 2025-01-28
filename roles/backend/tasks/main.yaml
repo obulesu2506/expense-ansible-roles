@@ -37,7 +37,7 @@
     path: /app
 
 - name: copy backend service
-  ansible.builtin.template:
+  ansible.builtin.template:  #It will search in the templates
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
 
@@ -61,4 +61,3 @@
     state: restarted
     enabled: true
     daemon_reload: true
-    
