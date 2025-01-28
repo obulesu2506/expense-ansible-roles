@@ -50,11 +50,13 @@
   - PyMySQL
 
 - name: connect to MYSQL 
-  community.mysql.mysql_info:
+  community.mysql.mysql_db:
     login_user: "{{ MYSQL_USER }}"
     login_password: "{{ MYSQL_PASSWORD }}"
     login_host: " {{ MYSQL_HOST }}"
     target: /app/schema/backend.sql
+    state: import
+    name: all
 
 - name: Daeomon Reload and restart the services
   ansible.builtin.systemd_service:
