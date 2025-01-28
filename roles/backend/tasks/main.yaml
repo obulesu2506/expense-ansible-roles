@@ -16,21 +16,28 @@
   ansible.builtin.user:
     name: expense
 
-- name: create app directory for downloading the backend code
-  ansible.builtin.file:
-    path: /app
-    state: directory
+- name: include from common role
+  # tags:
+  # - deployment
+  include_role:
+    name: common
+    tasks_from: main  # this 'main' should be any name which defined file name under COMMON ROLE tasks
 
-- name: download backend code
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    dest: /tmp/backend.zip
+# - name: create app directory for downloading the backend code
+#   ansible.builtin.file:
+#     path: /app
+#     state: directory
 
-- name: unzip the backend code
-  ansible.builtin.unarchive:
-    src: /tmp/backend.zip
-    dest: /app
-    remote_src: yes
+# - name: download backend code
+#   ansible.builtin.get_url:
+#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+#     dest: /tmp/backend.zip
+
+# - name: unzip the backend code
+#   ansible.builtin.unarchive:
+#     src: /tmp/backend.zip
+#     dest: /app
+#     remote_src: yes
 
 - name: install dependencies
   community.general.npm:
