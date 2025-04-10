@@ -1,3 +1,0 @@
-BACKEND_HOST: backend.kumardevops.store
-APP_LOCATION: /usr/share/nginx/html
-COMPONENT: frontend
