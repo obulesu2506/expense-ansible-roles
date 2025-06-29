@@ -1,3 +1,3 @@
 mysql_root_password: ExpenseApp@1
-MYSQL_HOST: mysql_kumardevops.store
+MYSQL_HOST: mysql.kumardevops.store
 
