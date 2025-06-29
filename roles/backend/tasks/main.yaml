@@ -50,13 +50,13 @@
   - PyMySQL
 
 - name: import MYSQL data
-  community.mysql.mysql_info:
-    state: import
-    name: all
+  community.mysql.mysql_db:
     login_user: "{{ MYSQL_USER}}"
     login_password: "{{ MYSQL_PASSWORD }}"
     login_host: "{{ MYSQL_HOST }}"
     target: /app/schema/backend.sql
+    name: all
+    state: 
 
 - name: daemon reload and restart the service
   ansible.builtin.systemd_service:
