@@ -1,6 +1,5 @@
-- name: Configuring backend server
+- name: Configuring backend and integrate with DB (MYSQL)
   hosts: backend
   become: yes
   roles:
   - backend
-  

@@ -1,6 +1,5 @@
-- name: Configuring front end server
+- name: Configuring frontend and intergate with DB(MYSQL) via backend
   hosts: frontend
   become: yes
   roles:
   - frontend
-  

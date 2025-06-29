@@ -1,34 +1,34 @@
-- name: install MYSQL libraries using Python
+- name: Configuring dependencies
   ansible.builtin.pip:
     name: "{{ item }}"
-    executable: pip3.9
+    executable: "pip3.9"
   loop:
-  - cryptography
+  - Cryptography
   - PyMySQL
 
-- name: MYSQL server configuration
+- name: Installing MYSQL server
   ansible.builtin.package:
     name: mysql-server
     state: installed
-  
-- name: Create and enable MYSQL service
+
+- name: Enable & start the MYSQL service
   ansible.builtin.service:
     name: mysqld
     state: started
     enabled: yes
 
-- name: Connecting MYSQL DB
+- name: Connect to MYSQL server
   community.mysql.mysql_info:
     login_user: root
     login_password: "{{ mysql_root_password }}"
-    login_host: mysql.kumardevops.store
+    login_host: "{{ MYSQL_HOST }}"
   register: mysql_info
   ignore_errors: true
 
-- name: print the output
+- name: Print the connection output status
   ansible.builtin.debug:
-    msg: "MYSQL Info: {{ mysql_info }}"
-  
-- name: setup root password
-  ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
+    msg: "MySQL info is : {{ mysql_info }}"
+
+- name: Setup the root password when the connection failed/ password not there
+  ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
   when: mysql_info.failed is true

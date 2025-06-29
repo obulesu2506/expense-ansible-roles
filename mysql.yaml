@@ -1,4 +1,4 @@
-- name: Configuring mysql server
+- name: Configuring mysql via ROLES
   hosts: mysql
   become: yes
   roles:
