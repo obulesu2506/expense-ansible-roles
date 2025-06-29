@@ -50,7 +50,7 @@
   - PyMySQL
 
 - name: import MYSQL data
-  community.mysql_mysql_info:
+  community.mysql.mysql_info:
     state: import
     name: all
     login_user: "{{ MYSQL_USER}}"
